@@ -135,8 +135,15 @@ code {
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    @apply scrollbar-thin scrollbar-track-gray-300 dark:scrollbar-track-transparent scrollbar-track-rounded-full;
+    @apply scrollbar-thumb-rounded-full scrollbar-thumb-gray-500 dark:scrollbar-thumb-gray-700/20;
+    @apply hover:scrollbar-thumb-gray-500 dark:hover:scrollbar-thumb-gray-700;
+    @apply scroll-smooth;
   }
   body {
     @apply bg-background text-foreground;
+    @apply scrollbar-thin scrollbar-track-gray-300 dark:scrollbar-track-transparent scrollbar-track-rounded-full;
+    @apply scrollbar-thumb-rounded-full scrollbar-thumb-gray-500 dark:scrollbar-thumb-gray-500;
+    @apply hover:scrollbar-thumb-gray-500 dark:hover:scrollbar-thumb-gray-700;
   }
 }

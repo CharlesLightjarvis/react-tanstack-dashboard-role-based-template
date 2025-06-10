@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { ModeToggle } from "./mode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -29,9 +28,6 @@ export const Navbar = () => {
 
       {/* right side */}
       <div className="flex items-center gap-4">
-        <Link to="/" className="text-lg font-bold">
-          Home
-        </Link>
         <ModeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger>

@@ -23,6 +23,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { Button } from "./ui/button";
+import { useNavigate, useRouter } from "@tanstack/react-router";
+import { useAuth } from "@/context/auth-context";
 
 export function NavUser({
   user,
@@ -34,6 +37,19 @@ export function NavUser({
   };
 }) {
   const { isMobile } = useSidebar();
+  const router = useRouter();
+  const navigate = useNavigate();
+  const auth = useAuth();
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      auth.logout().then(() => {
+        router.invalidate().finally(() => {
+          navigate({ to: "/" });
+        });
+      });
+    }
+  };
 
   return (
     <SidebarMenu>
@@ -96,9 +112,11 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut />
-              Log out
+            <DropdownMenuItem asChild>
+              <Button variant="ghost" className="w-full" onClick={handleLogout}>
+                <LogOut />
+                Log out
+              </Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
